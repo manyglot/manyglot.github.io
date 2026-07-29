@@ -37,17 +37,22 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
 
+    @keyframes subtleBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
     /* ════════════════════════════════════════════════════════════
        HEADER
     ════════════════════════════════════════════════════════════ */
     .site-header {
       background: var(--white);
-      border-bottom: 3px solid var(--gold);
+      border-bottom: 3px solid rgba(128, 128, 128, 0.7);
     }
 
     .header-inner {
       display: grid;
-      grid-template-columns: 250px 1fr 270px;
+      grid-template-columns: calc((100% - 12px) / 5) 1fr 270px;
       align-items: stretch;
       max-width: 100%;
       margin: 0 auto;
@@ -55,7 +60,7 @@
 
     /* Logo column */
     .header-logo {
-      padding: 20px 40px 20px 38px;
+      padding: 20px;
       background: var(--blue);
       border-right: 2px solid rgba(255,255,255,0.15);
       display: flex;
@@ -160,6 +165,7 @@
       padding: 9px 22px;
       border-radius: 5px;
       margin: 18px 0 16px;
+      animation: subtleBounce 2.5s infinite ease-in-out;
     }
 
     .callout-strip .weeks { color: var(--gold); }
@@ -274,13 +280,11 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      border-top: 3px solid var(--border);
-      border-left: 3px solid var(--border);
+      gap: 3px;
+      background-color: rgba(128, 128, 128, 0.7);
     }
 
     .step-block {
-      border-right: 3px solid var(--border);
-      border-bottom: 3px solid var(--border);
       padding: 18px 15px;
       background: var(--white);
       display: flex;
@@ -565,14 +569,14 @@
       padding: 13px 10px;
       border-radius: 0 0 5px 5px;
       margin-top: 0;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      transition: background 0.2s, box-shadow 0.2s;
       cursor: pointer;
       border: none;
+      animation: subtleBounce 2.5s infinite ease-in-out;
     }
 
     .enroll-btn:hover {
       background: #8f1410;
-      transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.3);
     }
 
@@ -614,7 +618,7 @@
     ════════════════════════════════════════════════════════════ */
     .site-footer {
       background: var(--blue);
-      border-top: 3px solid var(--gold);
+      border-top: 3px solid rgba(128, 128, 128, 0.7);
     }
 
     .footer-features {
@@ -670,6 +674,8 @@
       align-items: center;
       justify-content: center;
       gap: 16px;
+      text-decoration: none;
+      animation: subtleBounce 2.5s infinite ease-in-out;
       text-align: center;
     }
 
@@ -696,7 +702,7 @@
 
     /* Tablet landscape */
     @media (max-width: 1100px) {
-      .header-inner { grid-template-columns: 190px 1fr 240px; }
+      .header-inner { grid-template-columns: calc((100% - 12px) / 5) 1fr 240px; }
       .hero-top-line { font-size: 1.2rem; }
       .hero-red-line { font-size: 1.3rem; }
     }
@@ -720,11 +726,7 @@
 
       .steps-section {
         grid-template-columns: repeat(2, 1fr);
-        border-left: none;
-        border-top: none;
       }
-
-      .step-block { border-left: 3px solid var(--border); }
 
       .steps-section .step-block:nth-child(5) { grid-column: span 2; }
 
@@ -741,7 +743,6 @@
 
       .steps-section {
         grid-template-columns: 1fr;
-        border-left: 3px solid var(--border);
       }
 
       .steps-section .step-block:nth-child(5) { grid-column: span 1; }
@@ -855,33 +856,7 @@
 
         <!-- Stressed desk worker SVG illustration -->
         <div class="problem-icon" role="img" aria-label="Illustration of a stressed working professional">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- desk -->
-            <rect x="8"  y="44" width="56" height="5" rx="2" fill="#bbb"/>
-            <rect x="12" y="49" width="48" height="14" rx="2" fill="#d8d8d8"/>
-            <!-- monitor on desk -->
-            <rect x="22" y="32" width="28" height="16" rx="2" fill="#0a1c36"/>
-            <rect x="24" y="34" width="24" height="12" rx="1" fill="#1e3a5f"/>
-            <rect x="33" y="48" width="6" height="3" fill="#0a1c36"/>
-            <!-- person head -->
-            <circle cx="36" cy="22" r="9" fill="#f5c6a0"/>
-            <!-- sad mouth -->
-            <path d="M32 27 Q36 24.5 40 27" stroke="#b61c18" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- eyes -->
-            <circle cx="33" cy="21" r="1.2" fill="#5c3317"/>
-            <circle cx="39" cy="21" r="1.2" fill="#5c3317"/>
-            <!-- body -->
-            <path d="M28 31 Q36 36 44 31 L44 44 L28 44Z" fill="#0a1c36"/>
-            <!-- arms -->
-            <line x1="28" y1="35" x2="20" y2="43" stroke="#f5c6a0" stroke-width="4.5" stroke-linecap="round"/>
-            <line x1="44" y1="35" x2="52" y2="43" stroke="#f5c6a0" stroke-width="4.5" stroke-linecap="round"/>
-            <!-- stress dots -->
-            <circle cx="12" cy="14" r="3"   fill="#b61c18" opacity="0.85"/>
-            <circle cx="60" cy="18" r="3"   fill="#b61c18" opacity="0.75"/>
-            <circle cx="7"  cy="26" r="2.2" fill="#b61c18" opacity="0.6"/>
-            <circle cx="65" cy="10" r="2"   fill="#b61c18" opacity="0.5"/>
-            <circle cx="18" cy="8"  r="1.8" fill="#b61c18" opacity="0.45"/>
-          </svg>
+          <img src="stressed_professional.jpg" alt="Stressed working professional" style="width: 90px; height: 90px; object-fit: cover; border-radius: 12px;" />
         </div>
 
         <ul class="problem-list" aria-label="Problems faced by working professionals">
@@ -1117,13 +1092,13 @@
     </div>
 
     <!-- Full-width urgency banner -->
-    <div class="urgency-banner" role="region" aria-label="Limited seats notice">
+    <a href="https://wa.me/918770153678?text=Hi%20Manyglot%2C%20I%20want%20to%20enroll%20in%20the%20Chinese%20Learning%20Program!" target="_blank" rel="noopener noreferrer" class="urgency-banner" role="region" aria-label="Limited seats notice">
       <span class="urgency-clock" aria-hidden="true">⏰</span>
       <div>
         <div class="urgency-text">LIMITED SEATS – ENROLL NOW!</div>
         <div class="urgency-sub">Don't miss this life-changing opportunity.</div>
       </div>
-    </div>
+    </a>
 
   </footer>
 
