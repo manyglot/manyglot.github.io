@@ -37,9 +37,9 @@
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
 
-    @keyframes subtleBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
+    @keyframes popOut {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
     }
 
     /* ════════════════════════════════════════════════════════════
@@ -165,7 +165,7 @@
       padding: 9px 22px;
       border-radius: 5px;
       margin: 18px 0 16px;
-      animation: subtleBounce 2.5s infinite ease-in-out;
+      animation: popOut 0.5s infinite ease-in-out;
     }
 
     .callout-strip .weeks { color: var(--gold); }
@@ -572,7 +572,7 @@
       transition: background 0.2s, box-shadow 0.2s;
       cursor: pointer;
       border: none;
-      animation: subtleBounce 2.5s infinite ease-in-out;
+      animation: popOut 0.5s infinite ease-in-out;
     }
 
     .enroll-btn:hover {
@@ -673,10 +673,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
       text-decoration: none;
-      animation: subtleBounce 2.5s infinite ease-in-out;
       text-align: center;
+    }
+
+    .urgency-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      animation: popOut 0.5s infinite ease-in-out;
     }
 
     .urgency-clock { font-size: 2.2rem; flex-shrink: 0; }
@@ -1093,10 +1099,12 @@
 
     <!-- Full-width urgency banner -->
     <a href="https://wa.me/918770153678?text=Hi%20Manyglot%2C%20I%20want%20to%20enroll%20in%20the%20Chinese%20Learning%20Program!" target="_blank" rel="noopener noreferrer" class="urgency-banner" role="region" aria-label="Limited seats notice">
-      <span class="urgency-clock" aria-hidden="true">⏰</span>
-      <div>
-        <div class="urgency-text">LIMITED SEATS – ENROLL NOW!</div>
-        <div class="urgency-sub">Don't miss this life-changing opportunity.</div>
+      <div class="urgency-content">
+        <span class="urgency-clock" aria-hidden="true">⏰</span>
+        <div>
+          <div class="urgency-text">LIMITED SEATS – ENROLL NOW!</div>
+          <div class="urgency-sub">Don't miss this life-changing opportunity.</div>
+        </div>
       </div>
     </a>
 
